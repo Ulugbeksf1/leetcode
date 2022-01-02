@@ -1,0 +1,25 @@
+Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Note that you must do this in-place without making a copy of the array.
+var moveZeroes = function(nums) {
+    if (nums.length <= 1) {
+        return nums;
+    }
+    
+    let l = 0;
+    let r = 1;
+    
+    while (l < nums.length && r < nums.length) {
+        if (nums[l] === 0) {
+            if (nums[r] === 0) {
+                r++;
+                continue;
+            }
+            
+            [ nums[l], nums[r] ] = [ nums[r], nums[l] ];
+        } 
+        
+        l++;
+        r++;
+    }
+};
